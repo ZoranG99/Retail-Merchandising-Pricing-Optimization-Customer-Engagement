@@ -32,6 +32,14 @@ An online sportswear retailer needs to optimize its pricing, merchandising, and 
 ### Dataset Source
 The raw relational database (`retailDB.sqlite`) was sourced from Kaggle: [Retail E-Commerce Database](https://www.kaggle.com/datasets/angelobejaranociotti/retail-db?select=retailDB.sqlite).
 
+### Modeled Fields & Assumptions
+The source database contains no cost or unit-sales columns. To demonstrate profit and volume logic, two fields were **modeled** rather than measured:
+
+* **`est_unit_cost`** — estimated at **45% of listing price**. All net profit and margin figures (including the headline **$4.5M / 36.6% margin**) are downstream of this illustrative assumption and scale with it.
+* **`units_sold`** — derived as **revenue ÷ sale price**. This is an *implied* sales volume, not an actual unit count, and is used only to illustrate volume-based comparisons.
+
+These fields are intentional analytical estimates included to complete the profit narrative; they are not ground-truth figures from the source data.
+
 ### My Role
 **Lead Retail Data Analyst.** I extracted and inspected the raw SQLite database using **Python & Jupyter Notebooks**, then performed data cleaning, transformation, and structured modeling inside **Microsoft Excel** to build an interactive, multi-page executive dashboard.
 
@@ -66,7 +74,8 @@ To ensure the dashboard dynamically updates without manual intervention, the wor
 
 #### Strategic Questions & Findings:
 1. **What is the total revenue generated, and how does the revenue share split between Adidas and Nike?**
-   * **Insight:** Total business revenue reached **$12.3M** with a net profit of **$4.5M** (36.6% margin). Revenue share is heavily dominated by Adidas (**93.5%**), while Nike accounts for **6.5%**.
+   * **Insight:** Total business revenue reached **$12.3M** with an *estimated* net profit of **$4.5M** (36.6% margin). Revenue share is heavily dominated by Adidas (**93.5%**), while Nike accounts for **6.5%**.
+
 2. **What is the optimal discount tier (e.g., 0%, 20%, 50%) that maximizes total revenue without heavily eroding the base price?**
    * **Insight:** The **0% discount tier (full price)** generates the majority of revenue (**~$5.4M**) at the highest average sale price (**$91.80**). Among discounted items, the **40% tier** captures the highest revenue (**~$3.0M**), though average sale price drops to **$44.40**.
 3. **How does total revenue distribute across different product price brackets?**
@@ -90,7 +99,8 @@ To ensure the dashboard dynamically updates without manual intervention, the wor
 3. **Which specific products have the highest discrepancy between their original listing price and actual sale price?**
    * **Insight:** Footwear SKUs `BB9335` and `BB9420` lead the catalog with the highest absolute dollar gap, each dropping **$115** from listing to sale price, followed closely by `G28940` (**$114 gap**).
 4. **Do products with longer, more detailed descriptions correlate with higher sales performance?**
-   * **Insight:** While overall statistical correlation is weak ($r = 0.23$), products in the **200–299 character bucket** strongly outperform all others, driving **138.5K units sold** and capturing the highest total revenue (**~$6.8M**).
+   * **Insight:** While overall statistical correlation is weak ($r = 0.23$), products in the **200–299 character bucket** strongly outperform all others, driving the highest **implied sales volume** and capturing the highest total revenue (**~$6.8M**).
+
 5. **Are there "sleeping giants"—products with high listing prices and low discounts that still generate top-tier revenue?**
    * **Insight:** Yes. Several premium SKUs priced between **$170 and $300** sell at **0% discount (full price)** yet still generate top-tier revenue, led by `FV7826` (**$37.2K**) and `FV6794` (**$35.0K**).
 
