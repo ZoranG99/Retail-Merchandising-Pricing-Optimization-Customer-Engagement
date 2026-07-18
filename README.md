@@ -75,9 +75,8 @@ To ensure the dashboard dynamically updates without manual intervention, the wor
 #### Strategic Questions & Findings:
 1. **What is the total revenue generated, and how does the revenue share split between Adidas and Nike?**
    * **Insight:** Total business revenue reached **$12.3M** with an *estimated* net profit of **$4.5M** (36.6% margin). Revenue share is heavily dominated by Adidas (**93.5%**), while Nike accounts for **6.5%**.
-
 2. **What is the optimal discount tier (e.g., 0%, 20%, 50%) that maximizes total revenue without heavily eroding the base price?**
-   * **Insight:** The **0% discount tier (full price)** generates the majority of revenue (**~$5.4M**) at the highest average sale price (**$91.80**). Among discounted items, the **40% tier** captures the highest revenue (**~$3.0M**), though average sale price drops to **$44.40**.
+   * **Insight:** The **0% discount tier (full price)** generates the majority of revenue (**~$5.4M**) at the highest average sale price (**$91.80**). Among discounted items, the **50% tier** captures the highest revenue (**~$3.0M**), followed closely by the **40% tier (~$2.9M)**, though average sale price drops to **$35.50**.
 3. **How does total revenue distribute across different product price brackets?**
    * **Insight:** Revenue is heavily concentrated in the lower-to-mid brackets: the **$51–$100 bracket** leads by far (**$5.3M**), followed by **$101–$150 ($3.0M)** and **$0–$50 ($2.4M)**. Higher price brackets ($151+) contribute minimal revenue.
 4. **How do average sale prices compare between the two brands?**
@@ -85,7 +84,7 @@ To ensure the dashboard dynamically updates without manual intervention, the wor
 5. **Are there specific product price brackets (e.g., $0-$50, $51-$100) that drive the majority of the business's bottom line?**
    * **Insight:** Yes. The **$51–$100 bracket** drives the highest bottom line (**$1.7M net profit**), followed by **$0–$50 ($1.1M)** and **$101–$150 ($1.0M)**.
 6. **How do deep discounts impact the net profit across different price brackets?**
-   * **Insight:** Deep discounting at the **60% threshold** completely destroys unit economics, generating **negative net profit across every single price bracket** (totaling **-$23.9K**).
+   * **Insight:** Deep discounting at the **60% threshold** completely destroys unit economics, generating **negative net profit across every bracket where 60%-off items exist** (totaling **-$23.9K**).
 
 ### Page 2: Merchandising & Product Analytics
 
@@ -99,8 +98,7 @@ To ensure the dashboard dynamically updates without manual intervention, the wor
 3. **Which specific products have the highest discrepancy between their original listing price and actual sale price?**
    * **Insight:** Footwear SKUs `BB9335` and `BB9420` lead the catalog with the highest absolute dollar gap, each dropping **$115** from listing to sale price, followed closely by `G28940` (**$114 gap**).
 4. **Do products with longer, more detailed descriptions correlate with higher sales performance?**
-   * **Insight:** While overall statistical correlation is weak ($r = 0.23$), products in the **200–299 character bucket** strongly outperform all others, driving the highest **implied sales volume** and capturing the highest total revenue (**~$6.8M**).
-
+   * **Insight:** While overall statistical correlation is weak ($r = 0.23$, computed via `=CORREL()` in `Merchandising_Engine2`), products in the **200–299 character bucket** strongly outperform all others, driving the highest **implied sales volume** and capturing the highest total revenue (**~$6.8M**).
 5. **Are there "sleeping giants"—products with high listing prices and low discounts that still generate top-tier revenue?**
    * **Insight:** Yes. Several premium SKUs priced between **$170 and $300** sell at **0% discount (full price)** yet still generate top-tier revenue, led by `FV7826` (**$37.2K**) and `FV6794` (**$35.0K**).
 
