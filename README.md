@@ -77,6 +77,7 @@ To ensure the dashboard dynamically updates without manual intervention, the wor
    * **Insight:** Total business revenue reached **$12.3M** with an *estimated* net profit of **$4.5M** (36.6% margin). Revenue share is heavily dominated by Adidas (**93.5%**), while Nike accounts for **6.5%**.
 2. **What is the optimal discount tier (e.g., 0%, 20%, 50%) that maximizes total revenue without heavily eroding the base price?**
    * **Insight:** The **0% discount tier (full price)** generates the majority of revenue (**~$5.4M**) at the highest average sale price (**$91.80**). Among discounted items, the **50% tier** captures the highest revenue (**~$3.0M**), followed closely by the **40% tier (~$2.9M)**, though average sale price drops to **$35.50**.
+   * **Note:** Average sale price across discount tiers is non-monotonic (e.g., the 30% tier averages higher than the 20% and 40% tiers). This reflects the differing **product mix** within each tier rather than a clean, monotonic price-erosion curve.
 3. **How does total revenue distribute across different product price brackets?**
    * **Insight:** Revenue is heavily concentrated in the lower-to-mid brackets: the **$51–$100 bracket** leads by far (**$5.3M**), followed by **$101–$150 ($3.0M)** and **$0–$50 ($2.4M)**. Higher price brackets ($151+) contribute minimal revenue.
 4. **How do average sale prices compare between the two brands?**
@@ -98,7 +99,7 @@ To ensure the dashboard dynamically updates without manual intervention, the wor
 3. **Which specific products have the highest discrepancy between their original listing price and actual sale price?**
    * **Insight:** Footwear SKUs `BB9335` and `BB9420` lead the catalog with the highest absolute dollar gap, each dropping **$115** from listing to sale price, followed closely by `G28940` (**$114 gap**).
 4. **Do products with longer, more detailed descriptions correlate with higher sales performance?**
-   * **Insight:** While overall statistical correlation is weak ($r = 0.23$, computed via `=CORREL()` in `Merchandising_Engine2`), products in the **200–299 character bucket** strongly outperform all others, driving the highest **implied sales volume** and capturing the highest total revenue (**~$6.8M**).
+   * **Insight:** No linear relationship — correlation is weak ($r = 0.23$, computed via `=CORREL()` in `Merchandising_Engine2`), so description length does not predict revenue on its own. The effect is **non-linear**: the **200–299 character bucket** peaks sharply above all others, capturing the highest **implied sales volume** and total revenue (**~$6.8M**), while both shorter and longer descriptions underperform.
 5. **Are there "sleeping giants"—products with high listing prices and low discounts that still generate top-tier revenue?**
    * **Insight:** Yes. Several premium SKUs priced between **$170 and $300** sell at **0% discount (full price)** yet still generate top-tier revenue, led by `FV7826` (**$37.2K**) and `FV6794` (**$35.0K**).
 
@@ -114,7 +115,7 @@ To ensure the dashboard dynamically updates without manual intervention, the wor
 3. **How has web traffic trended over time, and what are the peak periods of site engagement?**
    * **Insight:** Monthly web traffic peaks heavily in **Q1 (Jan–Mar recording ~300–323 visits/month)** before dropping sharply in Q2–Q4 (~200 visits/month). On a weekly basis, traffic peaks midweek on **Wednesday (439 visits)** and **Friday (~430 visits)**.
 4. **Do products that haven't been visited recently (stale traffic) map directly to the lowest revenue generators?**
-   * **Insight:** No. Several items with stale traffic dates (early Jan 2018) drastically outperform the **$3,952 catalog average revenue**, led by SKU `FV3671` (**~$22K**) and SKU `EE5318` (**~$10.5K**), proving significant untapped revenue potential if re-engaged.
+   * **Insight:** No. Several of the least-recently-visited items (stalest last-visit dates, early Jan 2018) drastically outperform the **$3,952 catalog average revenue**, led by SKU `FV3671` (**~$22K**) and SKU `EE5318` (**~$10.5K**), proving significant untapped revenue potential if re-engaged.
 
 ## 📂 4. Repository Structure & How to Use
 
